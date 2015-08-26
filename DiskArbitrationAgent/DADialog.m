@@ -51,7 +51,7 @@ void DADialogShowDeviceRemoval( DADiskRef disk )
 {
     NSUserNotificationCenter * center;
 
-    center = [ NSUserNotificationCenter _centerForIdentifier: @_kDAAgentName type: _NSUserNotificationCenterTypeSystem ];
+    center = [ NSUserNotificationCenter _centerForIdentifier: @_kDAAgentName type: 0x2 ];
 
     if ( center )
     {
