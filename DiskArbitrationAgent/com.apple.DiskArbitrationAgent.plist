@@ -13,7 +13,10 @@
 	</dict>
 	<key>POSIXSpawnType</key>
 	<string>Interactive</string>
-	<key>Program</key>
-	<string>/System/Library/Frameworks/DiskArbitration.framework/Versions/A/Support/DiskArbitrationAgent</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/System/Library/Frameworks/DiskArbitration.framework/Versions/A/Support/DiskArbitrationAgent</string>
+		<string>-s</string>
+	</array>
 </dict>
 </plist>
