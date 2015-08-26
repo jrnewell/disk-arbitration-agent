@@ -2,7 +2,7 @@
 
 This is a modifed codebase for DiskArbitrationAgent that prevents OS X from displaying an "unreadable disk" dialog screen for SATA drives.
 
-![unreadble disk dialog](https://raw.github.com/jrnewell/disk-arbitration-agent/images/dialog.png)
+![unreadble disk dialog](https://raw.githubusercontent.com/jrnewell/disk-arbitration-agent/master/images/dialog.png)
 
 This annoyance occurs if you are running a dual-boot system where your Windows disks are running on a RAID setup (e.g. Intel ICH9R).  OS X will display two more of these dialogs on every bootup because it cannot read the RAID disks properly.
 
