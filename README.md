@@ -4,7 +4,7 @@ This is a modifed codebase for DiskArbitrationAgent that prevents OS X from disp
 
 ![unreadble disk dialog](https://raw.githubusercontent.com/jrnewell/disk-arbitration-agent/master/images/dialog.png)
 
-This annoyance occurs if you are running a dual-boot system where your Windows disks are running on a RAID setup (e.g. Intel ICH9R).  OS X will display two more of these dialogs on every bootup because it cannot read the RAID disks properly.
+This annoyance occurs if you are running a dual-boot system where your Windows disks are running on a RAID setup (e.g. Intel ICH9R).  OS X will display two more of these dialogs on every bootup because it cannot read the RAID disks properly.  ``/etc/fstat`` does seem to be effective in ignoring the disks because OS X will not assign a UUID for these disk since they are unreadable.  To overcome this limitation, I added an option to DiskArbitrationAgent to not display a dialog message if the disk is unreadble and is a SATA drive.  Otherwise, it behaves the same as Apple's version.
 
 The code is modifed from Apple's Open Source repository for version 10.10.3.
 
@@ -12,7 +12,7 @@ The code is modifed from Apple's Open Source repository for version 10.10.3.
 
 ## Installation
 
-Download the latest DiskArbitrationAgent binary from the Releases link in GitHub.  
+Download the latest DiskArbitrationAgent binary from the Releases link in GitHub.
 
 1. Backup your original ``/System/Library/Frameworks/DiskArbitration.framework/Versions/Current/Support/DiskArbitrationAgent`` binary to someplace safe.
 2. Copy the modified binary to this path.
