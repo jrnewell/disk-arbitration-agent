@@ -12,12 +12,12 @@ The code is modifed from Apple's Open Source repository for version 10.10.3.
 
 ## Installation
 
-Download the latest DiskArbitrationAgent binary from the Releases link in GitHub.
+Download the latest DiskArbitrationAgent binary from the [Releases](https://github.com/jrnewell/disk-arbitration-agent/releases/latest) link in GitHub.
 
-1. Backup your original ``/System/Library/Frameworks/DiskArbitration.framework/Versions/Current/Support/DiskArbitrationAgent`` binary to someplace safe.
+1. Backup your original ``/System/Library/Frameworks/DiskArbitration.framework/Versions/Current/Support/DiskArbitrationAgent`` binary to some place safe.
 2. Copy the modified binary to this path.
 3. Sign the new binary ``codesign -fs - DiskArbitrationAgent`` so it will run
-4. Back your original ``/System/Library/LaunchAgents/com.apple.DiskArbitrationAgent.plist`` launchd plist file to someplace safe.
+4. Back your original ``/System/Library/LaunchAgents/com.apple.DiskArbitrationAgent.plist`` launchd plist file to some place safe.
 5. Copy the modified plist to this path (it just passes the ``-s`` option to DiskArbitrationAgent)
 
 ## Compilation
