@@ -14,6 +14,12 @@ The code is modifed from Apple's Open Source repository for version 10.10.3.
 
 Download the latest DiskArbitrationAgent binary from the [Releases](https://github.com/jrnewell/disk-arbitration-agent/releases/latest) link in GitHub.
 
+### Automatically
+
+Run the ``./install.sh`` script (requires root privileges).  This will create a backup folder in the same directory.  Run ``./uninstall.sh <backup-dir-path>`` to uninstall.
+
+### Manually
+
 1. Backup your original ``/System/Library/Frameworks/DiskArbitration.framework/Versions/Current/Support/DiskArbitrationAgent`` binary to some place safe.
 2. Copy the modified binary to this path.
 3. Sign the new binary ``codesign -fs - DiskArbitrationAgent`` so it will run
