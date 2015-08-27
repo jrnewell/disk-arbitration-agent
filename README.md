@@ -16,7 +16,7 @@ Download the latest DiskArbitrationAgent binary from the [Releases](https://gith
 
 ### Automatically
 
-Run the ``./install.sh`` script (requires root privileges).  This will create a backup folder in the same directory.  Run ``./uninstall.sh <backup-dir-path>`` to uninstall.
+Run the ``./install.sh`` script (requires root privileges).  This will create a backup folder ``DiskArbitrationAgent_Backup`` in the same directory.  Run ``./uninstall.sh <backup-dir-path>`` to uninstall.
 
 ### Manually
 
