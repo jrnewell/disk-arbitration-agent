@@ -665,7 +665,7 @@
 		12D2592B030A908603A87B01 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 60BCD1B1088D46E40091026D /* Build configuration list for PBXProject "DiskArbitration" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -900,12 +900,14 @@
 					debug,
 					profile,
 				);
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = DiskArbitration/Info.plist;
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.DiskArbitration;
 				PRODUCT_NAME = DiskArbitration;
 				SECTORDER_FLAGS = (
 					"-sectorder",
@@ -925,11 +927,13 @@
 					debug,
 					profile,
 				);
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = DiskArbitration/Info.plist;
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.DiskArbitration;
 				PRODUCT_NAME = DiskArbitration;
 				SECTORDER_FLAGS = (
 					"-sectorder",
@@ -944,12 +948,34 @@
 		60BCD1B2088D46E40091026D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				ENABLE_TESTABILITY = YES;
+				HEADER_SEARCH_PATHS = "/Users/james/Downloads/osx9/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-U",
+					"-Xlinker",
+					_objc_readClassPair,
+				);
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
 		60BCD1B3088D46E40091026D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				HEADER_SEARCH_PATHS = "/Users/james/Downloads/osx9/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-Xlinker",
+					"-U",
+					"-Xlinker",
+					_objc_readClassPair,
+				);
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

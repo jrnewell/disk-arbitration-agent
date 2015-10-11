@@ -133,11 +133,6 @@ DAReturn DAAuthorize( DASessionRef        session,
             }
             else
             {
-                if ( DADiskGetDescription( disk, kDADiskDescriptionVolumeNetworkKey ) == kCFBooleanTrue )
-                {
-                    asprintf( &name, "system.volume.network.%s", right );
-                }
-                else
                 {
                     CFTypeRef object;
 
@@ -151,14 +146,7 @@ DAReturn DAAuthorize( DASessionRef        session,
                     {
                         if ( DADiskGetDescription( disk, kDADiskDescriptionMediaRemovableKey ) == kCFBooleanTrue )
                         {
-                            if ( DADiskGetDescription( disk, kDADiskDescriptionMediaTypeKey ) )
-                            {
-                                asprintf( &name, "system.volume.optical.%s", right );
-                            }
-                            else
-                            {
-                                asprintf( &name, "system.volume.removable.%s", right );
-                            }
+                            asprintf( &name, "system.volume.removable.%s", right );
                         }
                         else
                         {
