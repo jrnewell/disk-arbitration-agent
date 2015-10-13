@@ -1,11 +1,11 @@
 /*	
      NSUserNotification.h
-     Copyright (c) 2011-2014, Apple Inc. All rights reserved.
+     Copyright (c) 2011-2013, Apple Inc. All rights reserved.
 */
 
 #import <Foundation/NSObject.h>
 
-@class NSString, NSDictionary, NSArray, NSDateComponents, NSDate, NSTimeZone, NSImage, NSAttributedString, NSUserNotificationAction;
+@class NSString, NSDictionary, NSArray, NSDateComponents, NSDate, NSTimeZone, NSImage, NSAttributedString;
 @protocol NSUserNotificationCenterDelegate;
 
 // Used to describe the method in which the user activated the user notification. Alerts can be activated by either clicking on the body of the alert or the action button.
@@ -13,8 +13,7 @@ typedef NS_ENUM(NSInteger, NSUserNotificationActivationType) {
     NSUserNotificationActivationTypeNone = 0,
     NSUserNotificationActivationTypeContentsClicked = 1,
     NSUserNotificationActivationTypeActionButtonClicked = 2,
-    NSUserNotificationActivationTypeReplied NS_AVAILABLE(10_9, NA) = 3,
-    NSUserNotificationActivationTypeAdditionalActionClicked NS_AVAILABLE(10_10, NA) = 4,
+    NSUserNotificationActivationTypeReplied NS_AVAILABLE(10_9, NA) = 3
 } NS_ENUM_AVAILABLE(10_8, NA);
 
 NS_CLASS_AVAILABLE(10_8, NA)
@@ -22,8 +21,6 @@ NS_CLASS_AVAILABLE(10_8, NA)
 @private
     id _internal;
 }
-
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 // -----------------------
 // These properties are used to configure the notification before it is scheduled.
@@ -53,7 +50,7 @@ NS_CLASS_AVAILABLE(10_8, NA)
 @property (copy) NSDateComponents *deliveryRepeatInterval;
 
 // The date at which this notification was actually delivered. The notification center will set this value if a notification is put in the scheduled list and the delivery time arrives. If the notification is delivered directly using the 'deliverNotification:' method on NSUserNotificationCenter, this value will be set to the deliveryDate value (unless deliveryDate is nil, in which case this value is set to the current date). This value is used to sort the list of notifications in the user interface.
-@property (readonly, copy) NSDate *actualDeliveryDate;
+@property (readonly) NSDate *actualDeliveryDate;
 
 // In some cases, e.g. when your application is frontmost, the notification center may decide not to actually present a delivered notification. In that case, the value of this property will be NO. It will be set to YES if the notification was presented according to user preferences (note: this can mean no dialog, animation, or sound, if the user has turned off notifications completely for your application). 
 @property (readonly, getter=isPresented) BOOL presented;
@@ -86,25 +83,7 @@ NS_CLASS_AVAILABLE(10_8, NA)
 @property (copy) NSString *responsePlaceholder NS_AVAILABLE(10_9, NA);
 
 // When a notification has been responded to, the NSUserNotificationCenter delegate didActivateNotification: will be called with the notification with the activationType set to NSUserNotificationActivationTypeReplied and the response set on the response property
-@property (readonly, copy) NSAttributedString *response NS_AVAILABLE(10_9, NA);
-
-// An array of NSUserNotificationAction objects that describe the different actions that can be taken on a notification in addition to the default action described by actionButtonTitle
-@property (copy) NSArray *additionalActions NS_AVAILABLE(10_10, NA);
-// When a user selects an additional action that action will be set on the notification's additionalActivationAction property when passed into the delegate callback didActivateNotification
-@property (readonly, copy) NSUserNotificationAction *additionalActivationAction NS_AVAILABLE(10_10, NA);
-
-@end
-
-// An action shown to the user as part of a NSUserNotification in the additionalActions property.
-NS_CLASS_AVAILABLE_MAC(10_10)
-@interface NSUserNotificationAction : NSObject <NSCopying>
-
-+ (instancetype)actionWithIdentifier:(NSString *)identifier title:(NSString *)title;
-
-@property (readonly, copy) NSString *identifier;
-
-// The localized title of the action.
-@property (readonly, copy) NSString *title;
+@property (readonly) NSAttributedString *response NS_AVAILABLE(10_9, NA);
 
 @end
 
@@ -115,8 +94,6 @@ NS_CLASS_AVAILABLE(10_8, NA)
 @private
     id _internal;
 }
-
-+ (id)_centerForIdentifier:(id)arg1 type:(unsigned long long)arg2;
 
 // Get a singleton user notification center that posts notifications for this process.
 + (NSUserNotificationCenter *)defaultUserNotificationCenter;
@@ -143,7 +120,7 @@ NS_CLASS_AVAILABLE(10_8, NA)
 
 
 // Get a list of notifications that have been delivered to the Notification Center. The number of notifications the user actually sees in the user interface may be less than the size of this array. Note that these may or may not have been actually presented to the user (see the presented property on the NSUserNotification).
-@property (readonly, copy) NSArray *deliveredNotifications;
+@property (readonly) NSArray *deliveredNotifications;
 
 // Deliver a notification immediately, including animation or sound alerts. It will be presented to the user (subject to user preferences). The 'presented' property will always be set to YES if a notification is delivered using this method.
 - (void)deliverNotification:(NSUserNotification *)notification;

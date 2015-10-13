@@ -1,5 +1,3 @@
-#ifndef _BOOTSTRAP_PRIVATE_H_
-#define _BOOTSTRAP_PRIVATE_H_
 /*
  * Copyright (c) 2007 Apple Inc. All rights reserved.
  *
@@ -19,6 +17,9 @@
  * 
  * @APPLE_APACHE_LICENSE_HEADER_END@
  */
+
+#ifndef __BOOTSTRAP_PRIVATE_H__
+#define __BOOTSTRAP_PRIVATE_H__
 
 #include <servers/bootstrap.h>
 #include <sys/types.h>
@@ -66,4 +67,4 @@ kern_return_t bootstrap_get_root(mach_port_t bp, mach_port_t *root);
 
 __END_DECLS
 
-#endif
+#endif /* __BOOTSTRAP_PRIVATE_H__ */
