@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1998-2014 Apple Inc. All rights reserved.
+ * Copyright (c) 1998-2015 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -21,27 +21,32 @@
  * @APPLE_LICENSE_HEADER_END@
  */
 
-#ifndef __DISKARBITRATIOND_DAPRIVATE__
-#define __DISKARBITRATIOND_DAPRIVATE__
+#ifndef __DISKARBITRATIOND_DAPROBE__
+#define __DISKARBITRATIOND_DAPROBE__
 
 #include <CoreFoundation/CoreFoundation.h>
 
 #include "DADisk.h"
+#include "DAFileSystem.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
 
-extern DAReturn _DADiskRefresh( DADiskRef disk );
+typedef void ( *DAProbeCallback )( int             status,
+                                   DAFileSystemRef filesystem,
+                                   CFBooleanRef    clean,
+                                   CFStringRef     name,
+                                   CFStringRef     type,
+                                   CFUUIDRef       uuid,
+                                   void *          context );
 
-extern DAReturn _DADiskSetAdoption( DADiskRef disk, Boolean adoption );
-
-extern DAReturn _DADiskSetEncoding( DADiskRef disk, CFStringEncoding encoding );
-
-extern Boolean _DAUnitIsUnreadable( DADiskRef disk );
+extern void DAProbe( DADiskRef       disk,
+                     DAProbeCallback callback,
+                     void *          callbackContext );
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* !__DISKARBITRATIOND_DAPRIVATE__ */
+#endif /* !__DISKARBITRATIOND_DAPROBE__ */
