@@ -32,7 +32,7 @@ Run the ``./install.sh`` script (requires root privileges).  This will create a 
 
 Compilation is a bit tricky because Apple does not include all of the private headers that code base uses in the OS X SDK.
 
-I included the private headers I found online in folder PrivateHeaders.  You need to copy them to your XCode's SDK path ``Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk``.
+I included the private headers I found online in the folder PrivateHeaders.  You need modify the project's ``Header Search Paths`` to include the PrivateHeaders directory.  Alternatively, you can copy the header files to your XCode's SDK path ``/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk`` using the file ``PrivateHeaders XCode SDK.txt`` as a guide.
 
 Using XCode 6, ``Build Archive`` the DiskArbitrationAgent project and export the build using the XCode organizer.  The modified binary should be in the path ``DiskArbitrationAgent/System/Library/Frameworks/DiskArbitration.framework/Versions/Current/Support``
 

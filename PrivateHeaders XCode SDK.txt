@@ -1,0 +1,17 @@
+Where to copy private header files to:
+
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk
+├── System
+│   └── Library
+│       └── Frameworks
+│           ├── CoreFoundation.framework
+│           │   └── Headers
+│           │       ├── CFRuntime.h
+│           │       └── CFUserNotificationPriv.h
+│           └── Foundation.framework
+│               └── Headers
+│                   ├── NSUserNotification.h
+│                   └── NSUserNotification_Private.h
+└── usr
+    └── include
+        └── bootstrap_priv.h

@@ -853,7 +853,7 @@
 		603C87AA08EC8117004474CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/james/Downloads/PrivateHeaders/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/james/Downloads/disk-arbitration-agent/PrivateHeaders/**";
 				PRODUCT_NAME = All;
 			};
 			name = Debug;
@@ -861,7 +861,7 @@
 		603C87AB08EC8117004474CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/james/Downloads/PrivateHeaders/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/james/Downloads/disk-arbitration-agent/PrivateHeaders/**";
 				PRODUCT_NAME = All;
 			};
 			name = Release;
