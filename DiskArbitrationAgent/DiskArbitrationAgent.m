@@ -31,6 +31,7 @@
 #include <IOKit/storage/IOStorageProtocolCharacteristics.h>
 
 static Boolean __gDAOptionSataNoMsg = FALSE;
+static Boolean __gDAOptionUSBNoMsg = FALSE;
 
 char * gDAProcessName = NULL;
 
@@ -42,7 +43,8 @@ static void __usage( void )
     
     fprintf( stderr, "%s: [-s]\n", gDAProcessName );
     fprintf( stderr, "options:\n" );
-    fprintf( stderr, "\t-d\tdisable messages for unreadble SATA disks\n" );
+    fprintf( stderr, "\t-s\tdisable messages for unreadble SATA disks\n" );
+    fprintf( stderr, "\t-u\tdisable messages for unreadble USB disks\n" );
     
     exit( EX_USAGE );
 }
@@ -133,6 +135,29 @@ static void __DAAgentMessageCallback( xpc_object_t object )
                                         CFRelease(description);
                                     }
                                 }
+                                
+                                /*
+                                 * check if we should ignore unreadable USB disks
+                                 */
+                                
+                                if ( __gDAOptionUSBNoMsg ) {
+                                    
+                                    CFDictionaryRef description;
+                                    CFTypeRef object;
+                                    
+                                    description = DADiskCopyDescription( disk );
+                                    
+                                    if ( description ) {
+                                        object = CFDictionaryGetValue( description, kDADiskDescriptionDeviceProtocolKey );
+                                        if ( object && CFEqual( object, CFSTR( kIOPropertyPhysicalInterconnectTypeUSB ) ) )
+                                        {
+                                            CFRelease(description);
+                                            break;
+                                        }
+                                        
+                                        CFRelease(description);
+                                    }
+                                }
 
                                 DADialogShowDeviceUnreadable( disk );
 
@@ -175,6 +200,12 @@ int main( int argc, char * argv[], char * envp[] )
             case 's':
             {
                 __gDAOptionSataNoMsg = TRUE;
+                
+                break;
+            }
+            case 'u':
+            {
+                __gDAOptionUSBNoMsg = TRUE;
                 
                 break;
             }
