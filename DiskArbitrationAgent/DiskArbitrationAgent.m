@@ -193,7 +193,7 @@ int main( int argc, char * argv[], char * envp[] )
      * Process arguments.
      */
     
-    while ( ( option = getopt( argc, argv, "s" ) ) != -1 )
+    while ( ( option = getopt( argc, argv, "su" ) ) != -1 )
     {
         switch ( option )
         {
