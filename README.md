@@ -16,6 +16,8 @@ Download the latest DiskArbitrationAgent binary from the [Releases](https://gith
 
 I am also including a Mavericks and El Capitan build.  The El Capitan build uses the Yosemite source built against the OSX 11 SDK since the source code has not been released yet.
 
+**Note that System Integrity Protection must be turned off in 10.11+ to use the modified DiskArbitrationAgent. Turn off SIP at your own risk**
+
 ### Automatically
 
 Run the ``./install.sh`` script (requires root privileges).  This will create a backup folder ``DiskArbitrationAgent_Backup`` in the same directory.  Run ``./uninstall.sh <backup-dir-path>`` to uninstall.
@@ -33,6 +35,12 @@ Run the ``./install.sh`` script (requires root privileges).  This will create a 
 Compilation is a bit tricky because Apple does not include all of the private headers that code base uses in the OS X SDK.
 
 I included the private headers I found online in the folder PrivateHeaders.  You need modify the project's ``Header Search Paths`` to include the PrivateHeaders directory.  Alternatively, you can copy the header files to your XCode's SDK path ``/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk`` using the file ``PrivateHeaders XCode SDK.txt`` as a guide.
+
+Note that you might have a compilation issue with the file ``NSUserNotification.h`` because it exists in the public SDK but is missing the following method signature:
+```
++ (id)_centerForIdentifier:(id)arg1 type:(unsigned long long)arg2;
+```
+You may need to manually add this method signature to your public SDK version of ``NSUserNotification.h`` if your XCode is not picking up the modified ``NSUserNotification.h`` included in the repo.
 
 Using XCode 6, ``Build Archive`` the DiskArbitrationAgent project and export the build using the XCode organizer.  The modified binary should be in the path ``DiskArbitrationAgent/System/Library/Frameworks/DiskArbitration.framework/Versions/Current/Support``
 
