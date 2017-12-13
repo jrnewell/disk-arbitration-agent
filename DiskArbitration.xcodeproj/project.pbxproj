@@ -962,7 +962,7 @@
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				HEADER_SEARCH_PATHS = "/Users/james/Downloads/disk-arbitration-agent/PrivateHeaders/**";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -971,7 +971,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "/Users/james/Downloads/disk-arbitration-agent/PrivateHeaders/**";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 			};
 			name = Release;
 		};
